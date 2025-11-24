@@ -195,6 +195,97 @@
       padding: 20px 0;
       background: rgba(0,0,0,0.6);
     }
+
+    /* Chatbot Button & Chatbox */
+    #chatbot-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #2beac4;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      animation: pop 2s infinite ease;
+      z-index: 999;
+    }
+    #chatbox {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      width: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+    #chatbox.open { display: flex; }
+    #chatbox-header {
+      background: #2beac4;
+      color: #fff;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #chatbox-messages {
+      height: 260px;
+      padding: 10px;
+      overflow-y: auto;
+      background: #f7f7f7;
+    }
+    .user-msg {
+      background: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 10px;
+      margin: 5px 0;
+      text-align: right;
+    }
+    .bot-msg {
+      background: #e5e5e5;
+      color: #333;
+      padding: 8px 12px;
+      border-radius: 10px;
+      margin: 5px 0;
+      width: fit-content;
+    }
+    #chatbox-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    #chatbox-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+    }
+    #chatbox-input button {
+      padding: 10px 15px;
+      background: #2beac4;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Fix chatbot small picture */
+#chatbox-header img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
   </style>
 </head>
 <body>
@@ -369,5 +460,76 @@
     displayRatings();
   </script>
 
+<div id="chatbot-button">💬</div>
+
+  <div id="chatbox">
+    <div id="chatbox-header">
+      <div style="display:flex; align-items:center;">
+        <img src="img/bot.png" alt="bot">
+        AI Assistant
+      </div>
+      <button id="close-chat">✖</button>
+    </div>
+    <div id="chatbox-messages"></div>
+    <div id="chatbox-input">
+      <input type="text" id="chat-input" placeholder="Type a message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBtn = document.getElementById("chatbot-button");
+    const chatBox = document.getElementById("chatbox");
+    const closeChat = document.getElementById("close-chat");
+    const sendBtn = document.getElementById("send-btn");
+    const chatInput = document.getElementById("chat-input");
+    const chatMessages = document.getElementById("chatbox-messages");
+
+    chatBtn.onclick = () => chatBox.classList.add("open");
+    closeChat.onclick = () => chatBox.classList.remove("open");
+
+    function addMessage(text, type) {
+      const div = document.createElement("div");
+      div.classList.add(type === "user" ? "user-msg" : "bot-msg", "message");
+      div.innerHTML = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function aiResponse(msg) {
+      if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I help you today? 😊";
+      if (msg.includes("qa")) return "QA ensures quality by testing, reporting bugs, and validating requirements.";
+      if (msg.includes("portfolio")) return "Your portfolio shows your QA experience, projects, and skills.";
+      return "Thank you! I'll try my best to help you. 😊";
+    }
+
+    function addTypingIndicator() {
+      const div = document.createElement("div");
+      div.classList.add("typing");
+      div.innerHTML = "<span></span><span></span><span></span>";
+      div.id = "typing";
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      const el = document.getElementById("typing");
+      if (el) el.remove();
+    }
+
+    sendBtn.onclick = () => {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, "user");
+      chatInput.value = "";
+      addTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        addMessage(aiResponse(text.toLowerCase()), "bot");
+      }, 1000);
+    };
+  </script>
+
 </body>
 </html>
+
