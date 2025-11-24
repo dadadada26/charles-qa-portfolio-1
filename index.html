@@ -257,8 +257,72 @@
   <footer>
     <p>&copy; 2025 Charles David R. Habaan. All rights reserved.</p>
   </footer>
+<!-- AI Chatbot Floating Button -->
+<div id="chatbot-button">💬</div>
+
+<!-- Chatbox Container -->
+<div id="chatbox">
+  <div id="chatbox-header">
+    <span>AI Assistant</span>
+    <button id="close-chat">✖</button>
+  </div>
+
+  <div id="chatbox-messages"></div>
+
+  <div id="chatbox-input">
+    <input type="text" id="chat-input" placeholder="Type a message...">
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+<script>
+  // Elements
+  const chatBtn = document.getElementById("chatbot-button");
+  const chatBox = document.getElementById("chatbox");
+  const closeChat = document.getElementById("close-chat");
+  const sendBtn = document.getElementById("send-btn");
+  const chatInput = document.getElementById("chat-input");
+  const chatMessages = document.getElementById("chatbox-messages");
+
+  // Open Chat
+  chatBtn.onclick = () => chatBox.classList.add("open");
+
+  // Close Chat
+  closeChat.onclick = () => chatBox.classList.remove("open");
+
+  // Fake AI Responses
+  function aiResponse(message) {
+    if (message.includes("hello") || message.includes("hi")) 
+      return "Hello! How can I assist you today? 😊";
+
+    if (message.includes("qa") || message.includes("testing"))
+      return "As a QA Engineer, you focus on testing, bug reporting, and ensuring quality.";
+
+    if (message.includes("portfolio"))
+      return "This portfolio highlights your QA projects, skills, and experience.";
+
+    return "Thank you for your message! I will try my best to respond. 😊";
+  }
+
+  // Send Message
+  sendBtn.onclick = () => {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // User message
+    chatMessages.innerHTML += `<div class="user-msg">${text}</div>`;
+    chatInput.value = "";
+
+    // AI message
+    setTimeout(() => {
+      chatMessages.innerHTML += `<div class="bot-msg">${aiResponse(text.toLowerCase())}</div>`;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 600);
+  };
+</script>
 
 </body>
 </html>
+
 
 
