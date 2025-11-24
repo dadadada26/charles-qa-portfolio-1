@@ -483,8 +483,88 @@
     };
   </script>
 
+  <script>
+// ⭐ STAR RATING SELECTION
+let selectedRating = 0;
+const stars = document.querySelectorAll("#rating-stars span");
+let feedbackData = JSON.parse(localStorage.getItem("feedbackList")) || [];
+
+// Highlight stars
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    selectedRating = star.getAttribute("data-star");
+    updateStars(selectedRating);
+  });
+});
+
+function updateStars(rating) {
+  stars.forEach(star => {
+    star.classList.toggle("active", star.getAttribute("data-star") <= rating);
+  });
+  document.getElementById("selected-rating").textContent = "Your Rating: " + rating + " ⭐";
+}
+
+// ⭐ SAVE FEEDBACK + RATING (LOCAL STORAGE)
+const fbForm = document.querySelector("#feedback form");
+fbForm.addEventListener("submit", function (e) {
+  // let form submit normally to FormSubmit
+  const name = fbForm.querySelector("[name='name']").value;
+  const message = fbForm.querySelector("[name='feedback']").value;
+
+  if (selectedRating == 0) {
+    alert("Please select a star rating ⭐");
+    e.preventDefault();
+    return;
+  }
+
+  const newEntry = {
+    name,
+    rating: selectedRating,
+    message,
+    date: new Date().toLocaleString()
+  };
+
+  feedbackData.push(newEntry);
+  localStorage.setItem("feedbackList", JSON.stringify(feedbackData));
+
+  displayRatings();
+});
+
+// ⭐ DISPLAY RATINGS + AVERAGE
+function displayRatings() {
+  const list = document.getElementById("rating-list");
+  const avgDisplay = document.getElementById("avg-rating");
+
+  list.innerHTML = "";
+  if (feedbackData.length === 0) {
+    avgDisplay.textContent = "Average Rating: ⭐ 0.0";
+    return;
+  }
+
+  let total = 0;
+  feedbackData.forEach(entry => {
+    total += parseInt(entry.rating);
+
+    const div = document.createElement("div");
+    div.classList.add("rating-entry");
+    div.innerHTML = `
+      <strong>${entry.name}</strong> — ⭐ ${entry.rating}<br>
+      <small>${entry.date}</small>
+      <p>${entry.message}</p>
+    `;
+    list.appendChild(div);
+  });
+
+  avgDisplay.textContent = "Average Rating: ⭐ " + (total / feedbackData.length).toFixed(1);
+}
+
+displayRatings();
+</script>
+
+  
 </body>
 </html>
+
 
 
 
