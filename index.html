@@ -178,6 +178,97 @@
     color: #fff; 
     animation: fadeIn 2s ease-out;
   }
+    /* Chatbot Floating Button */
+#chatbot-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #2beac4;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  animation: pop 2s infinite ease;
+  z-index: 999;
+}
+
+/* Chatbox Window */
+#chatbox {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#chatbox.open { display: flex; }
+
+#chatbox-header {
+  background: #2beac4;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+#chatbox-messages {
+  height: 260px;
+  padding: 10px;
+  overflow-y: auto;
+  background: #f7f7f7;
+}
+
+.user-msg {
+  background: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 5px 0;
+  text-align: right;
+}
+
+.bot-msg {
+  background: #e5e5e5;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 5px 0;
+  width: fit-content;
+}
+
+/* Chat Input */
+#chatbox-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#chatbox-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+#chatbox-input button {
+  padding: 10px 15px;
+  background: #2beac4;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -323,6 +414,7 @@
 
 </body>
 </html>
+
 
 
 
