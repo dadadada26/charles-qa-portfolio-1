@@ -6,198 +6,73 @@
   <title>Charles David R. Habaan - QA Portfolio</title>
   <style>
     /* Reset & Base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      line-height: 1.6;
-      color: #fff;
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    body { line-height:1.6; color:#fff; overflow-x:hidden; background: linear-gradient(-45deg, #2beac4, #333, #444, #2b2b2b); background-size: 400% 400%; animation: gradientBG 15s ease infinite; }
 
-      /* Animated gradient background */
-      background: linear-gradient(-45deg, #2beac4, #ff8c00, #6a0dad, #ff0066);
-      background-size: 400% 400%;
-      animation: gradientMove 20s ease infinite;
-    }
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes gradientBG {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
     }
 
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-    /* Header */
-    header {
-      background: rgba(0,0,0,0.6);
-      padding: 20px 0;
-      text-align: center;
-      animation: fadeIn 1s ease-out;
+    /* Floating tech icons */
+    .tech-icon {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.6;
+      animation: float 20s linear infinite;
+      pointer-events: none;
     }
-    header h1 { font-size: 2.5em; margin-bottom: 5px; }
-    header p { font-size: 1.2em; }
-
-    /* Navigation */
-    nav {
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px 0;
-      animation: slideUp 0.8s ease-out;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-    nav a:hover { color: #2beac4; transform: scale(1.1); }
-
-    /* Sections */
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-      animation: fadeIn 1.2s ease forwards;
-      background: rgba(0,0,0,0.4);
-      border-radius: 15px;
-      margin-bottom: 40px;
-    }
-    section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2em;
-      animation: slideUp 1s ease-out;
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity:0.6;}
+      50% { transform: translateY(-200px) rotate(180deg); opacity:0.8;}
+      100% { transform: translateY(0) rotate(360deg); opacity:0.6;}
     }
 
-    /* About */
-    #about img {
-      display: block;
-      margin: 20px auto;
-      border-radius: 50%;
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      animation: fadeIn 2s ease-out;
-    }
-    #about p {
-      max-width: 700px;
-      margin: 20px auto 0;
-      text-align: center;
-      animation: slideUp 1.5s ease-out;
-    }
+    header { text-align:center; padding:40px 0; background:rgba(0,0,0,0.3);}
+    header h1 { font-size:2.5em; }
+    header p { font-size:1.2em; }
 
-    /* Projects */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: transform 0.4s, box-shadow 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    }
-    .project-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .project-card h3 { margin-bottom: 10px; }
-    .project-card p { color: #ddd; }
+    nav { display:flex; justify-content:center; gap:20px; padding:15px 0; background:rgba(0,0,0,0.4);}
+    nav a { color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav a:hover { color:#2beac4; }
 
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      animation: fadeIn 2s ease-out;
-    }
-    .skill {
-      background: #2beac4;
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      animation: pop 2s infinite ease-in-out;
-    }
+    section { padding:60px 20px; max-width:1000px; margin:auto; text-align:center; }
+    section h2 { font-size:2em; margin-bottom:30px; }
 
-    /* Forms */
-    form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      animation: slideUp 1.4s ease-out;
-    }
-    form input, form textarea {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 100%;
-    }
-    form button {
-      background: #333;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background 0.3s, transform 0.3s;
-    }
-    form button:hover {
-      background: #2beac4;
-      transform: scale(1.05);
-    }
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .project-card { background:rgba(0,0,0,0.5); padding:20px; border-radius:15px; transition: transform 0.3s; }
+    .project-card:hover { transform: scale(1.05); }
+    .project-card img { width:100%; border-radius:10px; margin-bottom:10px; }
 
-    /* Feedback Stars */
-    .stars span {
-      font-size: 40px;
-      cursor: pointer;
-      color: #ccc;
-      transition: 0.3s;
-      display: inline-block;
-      user-select: none;
-    }
-    .stars span.active {
-      color: gold;
-      transform: scale(1.2);
-    }
+    .skills { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:20px;}
+    .skill { background:#2beac4; color:#333; padding:10px 15px; border-radius:5px; font-weight:bold; }
 
-    /* Display Ratings */
-    .display-ratings .rating-entry {
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
+    #contact form, #feedback form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:15px; }
+    #contact input, #contact textarea, #feedback input, #feedback textarea { padding:10px; border-radius:5px; border:none; }
+    #contact button, #feedback button { padding:10px; border:none; border-radius:5px; background:#2beac4; color:#333; cursor:pointer; transition:0.3s; }
+    #contact button:hover, #feedback button:hover { transform:scale(1.05); }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      background: rgba(0,0,0,0.6);
-    }
+    footer { text-align:center; padding:20px 0; background:rgba(0,0,0,0.3); margin-top:50px; }
+
+    /* Rating */
+    .stars span { font-size:2em; cursor:pointer; color:#ccc; transition:0.3s; }
+    .stars span.selected, .stars span.hover { color:#FFD700; }
   </style>
+  <!-- Load FontAwesome for tech icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  <!-- Floating tech icons -->
+  <i class="tech-icon fab fa-html5"></i>
+  <i class="tech-icon fab fa-css3-alt"></i>
+  <i class="tech-icon fab fa-js"></i>
+  <i class="tech-icon fab fa-react"></i>
+  <i class="tech-icon fab fa-node"></i>
+  <i class="tech-icon fab fa-python"></i>
+  <i class="tech-icon fab fa-php"></i>
+  <i class="tech-icon fab fa-docker"></i>
 
   <header>
     <h1>Charles David R. Habaan</h1>
@@ -214,27 +89,21 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <img src="img/viber_image_2025-10-06_10-38-57-643.png" alt="Profile Picture">
-    <p>Hello! I am Charles David R. Habaan, a Software Quality Assurance Engineer I. I specialize in functional testing, QA planning, defect tracking, and ensuring software meets business requirements. Passionate about improving software quality and enhancing user experience, I have experience with both manual and automated testing across multiple systems.</p>
+    <p>Hello! I am Charles David R. Habaan, a Software Quality Assurance Engineer I. Passionate about improving software quality and user experience.</p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       <div class="project-card">
-        <img src="img/eboss.png" alt="eBOSS System">
+        <img src="img/eboss.png" alt="eBOSS">
         <h3>eBOSS System Testing</h3>
-        <p>Performed full-cycle testing for the eBOSS Business Permit Licensing System, including functional, regression, and UAT testing. Logged and tracked defects in OpenProject and ensured compliance with client requirements.</p>
+        <p>Performed full-cycle testing for eBOSS Business Permit Licensing System.</p>
       </div>
       <div class="project-card">
-        <img src="img/crs.png" alt="TOMS Treasury">
+        <img src="img/crs.png" alt="TOMS">
         <h3>TOMS Treasury Operations</h3>
-        <p>Conducted QA for the Treasury Operations Management System (TOMS), including dashboard verification, report validation, and transaction testing. Collaborated with developers to resolve critical issues and improve system reliability.</p>
-      </div>
-      <div class="project-card">
-        <img src="img/testplan.png" alt="Test Plans">
-        <h3>Test Plans & Documentation</h3>
-        <p>Created comprehensive test plans, test cases, and defect reports for multiple projects. Ensured traceability from requirements to test execution, improving overall software quality and reducing post-deployment defects.</p>
+        <p>QA for TOMS including dashboard and transaction validation.</p>
       </div>
     </div>
   </section>
@@ -244,23 +113,19 @@
     <div class="skills">
       <span class="skill">Manual Testing</span>
       <span class="skill">Test Case Design</span>
-      <span class="skill">Bug Reporting</span>
-      <span class="skill">OpenProject</span>
-      <span class="skill">UAT & QA Coordination</span>
-      <span class="skill">Regression Testing</span>
-      <span class="skill">SRS Analysis</span>
-      <span class="skill">Automation Basics</span>
       <span class="skill">SQL</span>
+      <span class="skill">Automation Basics</span>
+      <span class="skill">OpenProject</span>
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="text" placeholder="Subject" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
+    <form action="https://formsubmit.co/charlesdavid.ge2020@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
@@ -278,96 +143,48 @@
       </div>
       <p id="selected-rating">Your Rating: 0 ⭐</p>
     </div>
-
     <form action="https://formsubmit.co/charlesdavid.ge2020@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-      <input type="hidden" name="rating" id="hidden-rating" value="0">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="feedback" rows="5" placeholder="Share your feedback about my projects..." required></textarea>
+      <textarea name="feedback" rows="5" placeholder="Share your feedback..." required></textarea>
+      <input type="hidden" name="rating" id="form-rating" value="0">
       <button type="submit">Submit Feedback</button>
     </form>
-
-    <div class="display-ratings">
-      <h3>Community Ratings</h3>
-      <p id="avg-rating">Average Rating: ⭐ 0.0</p>
-      <div id="rating-list"></div>
-    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Charles David R. Habaan. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Star rating logic
-    let selectedRating = 0;
-    const stars = document.querySelectorAll("#rating-stars span");
-    let feedbackData = JSON.parse(localStorage.getItem("feedbackList")) || [];
+<script>
+  // Floating tech icons random positioning
+  const icons = document.querySelectorAll('.tech-icon');
+  icons.forEach(icon => {
+    icon.style.left = Math.random() * window.innerWidth + 'px';
+    icon.style.top = Math.random() * window.innerHeight + 'px';
+    icon.style.animationDuration = 15 + Math.random() * 15 + 's';
+  });
 
-    stars.forEach(star => {
-      star.addEventListener("click", () => {
-        selectedRating = star.getAttribute("data-star");
-        updateStars(selectedRating);
-      });
+  // Rating stars functionality
+  const stars = document.querySelectorAll('#rating-stars span');
+  const selectedRating = document.getElementById('selected-rating');
+  const formRating = document.getElementById('form-rating');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const rating = star.dataset.star;
+      formRating.value = rating;
+      selectedRating.textContent = `Your Rating: ${rating} ⭐`;
+      stars.forEach(s => s.classList.remove('selected'));
+      for(let i=0;i<rating;i++){ stars[i].classList.add('selected'); }
     });
-
-    function updateStars(rating) {
-      stars.forEach(star => {
-        star.classList.toggle("active", star.getAttribute("data-star") <= rating);
-      });
-      document.getElementById("selected-rating").textContent = "Your Rating: " + rating + " ⭐";
-    }
-
-    const fbForm = document.querySelector("#feedback form");
-    fbForm.addEventListener("submit", function (e) {
-      if (selectedRating == 0) {
-        alert("Please select a star rating ⭐ before submitting!");
-        e.preventDefault();
-        return;
-      }
-      document.getElementById("hidden-rating").value = selectedRating;
-
-      const name = fbForm.querySelector("[name='name']").value;
-      const message = fbForm.querySelector("[name='feedback']").value;
-      const newEntry = {
-        name,
-        rating: selectedRating,
-        message,
-        date: new Date().toLocaleString()
-      };
-      feedbackData.push(newEntry);
-      localStorage.setItem("feedbackList", JSON.stringify(feedbackData));
-      displayRatings();
+    star.addEventListener('mouseover', () => {
+      stars.forEach(s=>s.classList.remove('hover'));
+      for(let i=0;i<star.dataset.star;i++){ stars[i].classList.add('hover'); }
     });
-
-    function displayRatings() {
-      const list = document.getElementById("rating-list");
-      const avgDisplay = document.getElementById("avg-rating");
-      list.innerHTML = "";
-      if (feedbackData.length === 0) {
-        avgDisplay.textContent = "Average Rating: ⭐ 0.0";
-        return;
-      }
-      let total = 0;
-      feedbackData.forEach(entry => {
-        total += parseInt(entry.rating);
-        const div = document.createElement("div");
-        div.classList.add("rating-entry");
-        div.innerHTML = `
-          <strong>${entry.name}</strong> — ⭐ ${entry.rating}<br>
-          <small>${entry.date}</small>
-          <p>${entry.message}</p>
-        `;
-        list.appendChild(div);
-      });
-      avgDisplay.textContent = "Average Rating: ⭐ " + (total / feedbackData.length).toFixed(1);
-    }
-
-    displayRatings();
-  </script>
-
+    star.addEventListener('mouseout', () => stars.forEach(s=>s.classList.remove('hover')));
+  });
+</script>
 </body>
 </html>
