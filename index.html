@@ -5,281 +5,268 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charles David R. Habaan - QA Portfolio</title>
   <style>
-  /* Reset & Base */
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-  body { line-height: 1.6; background-color: #f4f4f4; color: #333; }
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
 
-  /* --- ANIMATIONS --- */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    /* Header */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 5px; }
+    header p { font-size: 1.2em; }
 
-  @keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
+    /* Navigation */
+    nav {
+      background: #444;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+      animation: slideUp 0.8s ease-out;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+    nav a:hover { color: #2beac4; transform: scale(1.1); }
 
-  /* Header */
-  header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    animation: fadeIn 1s ease-out;
-  }
-  header h1 { font-size: 2.5em; margin-bottom: 5px; }
-  header p { font-size: 1.2em; }
+    /* Sections */
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #333;
+      animation: slideUp 1s ease-out;
+    }
 
-  /* Navigation */
-  nav {
-    background: #444;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px 0;
-    animation: slideUp 0.8s ease-out;
-  }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s ease;
-  }
-  nav a:hover { color: #2beac4; transform: scale(1.1); }
+    /* About */
+    #about img {
+      display: block;
+      margin: 20px auto;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      animation: fadeIn 2s ease-out;
+    }
+    #about p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      text-align: center;
+      animation: slideUp 1.5s ease-out;
+    }
 
-  /* Sections */
-  section { 
-    padding: 50px 20px; 
-    max-width: 1000px; 
-    margin: auto; 
-    animation: fadeIn 1.2s ease forwards; 
-  }
-  
-  section h2 { 
-    text-align: center; 
-    margin-bottom: 30px; 
-    font-size: 2em; 
-    color: #333;
-    animation: slideUp 1s ease-out; 
-  }
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.4s, box-shadow 0.3s;
+      opacity: 0;
+      animation: fadeIn 1.3s ease forwards;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .project-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .project-card h3 { margin-bottom: 10px; color: #333; }
+    .project-card p { color: #666; }
 
-  /* About */
-  #about img { 
-    display: block; 
-    margin: 20px auto; 
-    border-radius: 50%; 
-    width: 200px; 
-    height: 200px; 
-    object-fit: cover;
-    animation: fadeIn 2s ease-out;
-  }
-  #about p { 
-    max-width: 700px; 
-    margin: 20px auto 0; 
-    text-align: center;
-    animation: slideUp 1.5s ease-out;
-  }
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      animation: fadeIn 2s ease-out;
+    }
+    .skill {
+      background: #2beac4;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      animation: pop 2s infinite ease-in-out;
+    }
 
-  /* Projects */
-  .projects { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px; 
-  }
+    /* Contact */
+    #contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      animation: slideUp 1.4s ease-out;
+    }
+    #contact input, #contact textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    #contact button {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s, transform 0.3s;
+    }
+    #contact button:hover {
+      background: #2beac4;
+      transform: scale(1.05);
+    }
 
-  .project-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.4s, box-shadow 0.3s;
-    opacity: 0;
-    animation: fadeIn 1.3s ease forwards;
-  }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #333;
+      color: #fff;
+      animation: fadeIn 2s ease-out;
+    }
 
-  .project-card:hover { 
-    transform: translateY(-8px) scale(1.03); 
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-
-  .project-card img { 
-    width: 100%; 
-    height: 150px; 
-    object-fit: cover; 
-    border-radius: 5px; 
-    margin-bottom: 10px; 
-  }
-
-  .project-card h3 { margin-bottom: 10px; color: #333; }
-  .project-card p { color: #666; }
-
-  /* Skills */
-  .skills { 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 15px; 
-    animation: fadeIn 2s ease-out;
-  }
-
-  .skill { 
-    background: #2beac4; 
-    color: #fff; 
-    padding: 10px 15px; 
-    border-radius: 5px; 
-    font-weight: bold;
-    animation: pop 2s infinite ease-in-out;
-  }
-
-  /* Contact */
-  #contact form { 
-    max-width: 600px; 
-    margin: auto; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px;
-    animation: slideUp 1.4s ease-out;
-  }
-  #contact input, 
-  #contact textarea { 
-    padding: 10px; 
-    border-radius: 5px; 
-    border: 1px solid #ccc; 
-    width: 100%; 
-  }
-
-  #contact button {
-    background: #333; 
-    color: #fff; 
-    padding: 10px; 
-    border: none; 
-    border-radius: 5px;
-    cursor: pointer; 
-    font-size: 1em;
-    transition: background 0.3s, transform 0.3s;
-  }
-  #contact button:hover { 
-    background: #2beac4;
-    transform: scale(1.05);
-  }
-
-  /* Footer */
-  footer { 
-    text-align: center; 
-    padding: 20px 0; 
-    background: #333; 
-    color: #fff; 
-    animation: fadeIn 2s ease-out;
-  }
-    /* Chatbot Floating Button */
-#chatbot-button {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #2beac4;
-  color: #fff;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  animation: pop 2s infinite ease;
-  z-index: 999;
-}
-
-/* Chatbox Window */
-#chatbox {
-  position: fixed;
-  bottom: 100px;
-  right: 25px;
-  width: 300px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 999;
-}
-
-#chatbox.open { display: flex; }
-
-#chatbox-header {
-  background: #2beac4;
-  color: #fff;
-  padding: 10px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-}
-
-#chatbox-messages {
-  height: 260px;
-  padding: 10px;
-  overflow-y: auto;
-  background: #f7f7f7;
-}
-
-.user-msg {
-  background: #333;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
-  margin: 5px 0;
-  text-align: right;
-}
-
-.bot-msg {
-  background: #e5e5e5;
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 10px;
-  margin: 5px 0;
-  width: fit-content;
-}
-
-/* Chat Input */
-#chatbox-input {
-  display: flex;
-  border-top: 1px solid #ccc;
-}
-
-#chatbox-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-}
-
-#chatbox-input button {
-  padding: 10px 15px;
-  background: #2beac4;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-</style>
+    /* Chatbot Button & Chatbox */
+    #chatbot-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #2beac4;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      animation: pop 2s infinite ease;
+      z-index: 999;
+    }
+    #chatbox {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      width: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+    #chatbox.open { display: flex; }
+    #chatbox-header {
+      background: #2beac4;
+      color: #fff;
+      padding: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #chatbox-messages {
+      height: 260px;
+      padding: 10px;
+      overflow-y: auto;
+      background: #f7f7f7;
+    }
+    .user-msg {
+      background: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 10px;
+      margin: 5px 0;
+      text-align: right;
+    }
+    .bot-msg {
+      background: #e5e5e5;
+      color: #333;
+      padding: 8px 12px;
+      border-radius: 10px;
+      margin: 5px 0;
+      width: fit-content;
+    }
+    #chatbox-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    #chatbox-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+    }
+    #chatbox-input button {
+      padding: 10px 15px;
+      background: #2beac4;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <h1>Charles David R. Habaan</h1>
     <p>Software Quality Assurance Engineer I</p>
   </header>
 
-  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
@@ -287,36 +274,33 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <img src="img\viber_image_2025-10-06_10-38-57-643.png" alt="Charles David Habaan Profile Picture">
+    <img src="img/viber_image_2025-10-06_10-38-57-643.png" alt="Charles David Habaan Profile Picture">
     <p>Hello! I am Charles David R. Habaan, a Software Quality Assurance Engineer I. I specialize in functional testing, QA planning, defect tracking, and ensuring software meets business requirements. Passionate about improving software quality and enhancing user experience, I have experience with both manual and automated testing across multiple systems.</p>
   </section>
 
-  <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       <div class="project-card">
-        <img src="img\eboss.png"> 
+        <img src="img/eboss.png" alt="eBOSS System">
         <h3>eBOSS System Testing</h3>
         <p>Performed full-cycle testing for the eBOSS Business Permit Licensing System, including functional, regression, and UAT testing. Logged and tracked defects in OpenProject and ensured compliance with client requirements.</p>
       </div>
       <div class="project-card">
-        <img src="img\crs.png">
+        <img src="img/crs.png" alt="TOMS Treasury">
         <h3>TOMS Treasury Operations</h3>
         <p>Conducted QA for the Treasury Operations Management System (TOMS), including dashboard verification, report validation, and transaction testing. Collaborated with developers to resolve critical issues and improve system reliability.</p>
       </div>
       <div class="project-card">
-        <img src="img\testplan.png">
+        <img src="img/testplan.png" alt="Test Plans">
         <h3>Test Plans & Documentation</h3>
         <p>Created comprehensive test plans, test cases, and defect reports for multiple projects. Ensured traceability from requirements to test execution, improving overall software quality and reducing post-deployment defects.</p>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills">
@@ -332,7 +316,6 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Me</h2>
     <form>
@@ -344,276 +327,79 @@
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Charles David R. Habaan. All rights reserved.</p>
   </footer>
-/* CHATBOT UPGRADED UI */
 
-/* Floating Chat Bubble */
-#chatbot-button {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: linear-gradient(135deg, #2beac4, #1ca58b);
-  color: #fff;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  font-size: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-  animation: pulse 2s infinite;
-  z-index: 999;
-  transition: transform 0.3s;
-}
+  <div id="chatbot-button">💬</div>
 
-#chatbot-button:hover {
-  transform: scale(1.1);
-}
-
-/* Pulse Animation */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(43,234,196,0.7); }
-  70% { box-shadow: 0 0 15px 20px rgba(43,234,196,0); }
-  100% { box-shadow: 0 0 0 0 rgba(43,234,196,0); }
-}
-
-/* Chatbox */
-#chatbox {
-  position: fixed;
-  bottom: 100px;
-  right: 25px;
-  width: 330px;
-  height: 430px;
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 999;
-  animation: slideUp 0.4s ease forwards;
-}
-
-/* Slide animation */
-@keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-#chatbox.open { display: flex; }
-
-/* Chatbox Header */
-#chatbox-header {
-  background: linear-gradient(135deg, #2beac4, #1ca58b);
-  color: #fff;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: bold;
-}
-
-#chatbox-header img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-/* Chat Messages */
-#chatbox-messages {
-  height: 300px;
-  padding: 15px;
-  overflow-y: auto;
-  background: #f7f7f7;
-}
-
-#chatbox-messages::-webkit-scrollbar {
-  width: 6px;
-}
-#chatbox-messages::-webkit-scrollbar-thumb {
-  background: #bbbbbb;
-  border-radius: 10px;
-}
-
-/* Message Fade-in Animation */
-.message {
-  opacity: 0;
-  animation: fadeIn 0.4s forwards;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* User Message */
-.user-msg {
-  background: #333;
-  color: #fff;
-  padding: 10px 13px;
-  border-radius: 12px;
-  margin: 8px 0;
-  text-align: right;
-  margin-left: 40px;
-}
-
-/* Bot Message */
-.bot-msg {
-  background: #e9fdf9;
-  color: #0f6f5e;
-  padding: 10px 13px;
-  border-radius: 12px;
-  margin: 8px 0;
-  margin-right: 40px;
-  border-left: 4px solid #2beac4;
-}
-
-/* Typing Indicator */
-.typing {
-  display: inline-block;
-  background: #e9fdf9;
-  padding: 6px 10px;
-  border-radius: 8px;
-  margin: 8px 0;
-}
-.typing span {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: #2beac4;
-  border-radius: 50%;
-  margin: 0 2px;
-  animation: blink 1s infinite;
-}
-@keyframes blink {
-  50% { opacity: 0.2; }
-}
-
-/* Chat Input */
-#chatbox-input {
-  display: flex;
-  border-top: 1px solid #ccc;
-  background: #fff;
-}
-
-#chat-input {
-  flex: 1;
-  padding: 13px;
-  border: none;
-  outline: none;
-}
-
-#send-btn {
-  padding: 12px 18px;
-  background: #2beac4;
-  border: none;
-  border-radius: 0;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#send-btn:hover {
-  background: #1ca58b;
-}
-
-/* Close Button */
-#close-chat {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-  <!-- Floating Chat Button -->
-<div id="chatbot-button">💬</div>
-
-<!-- Chatbox -->
-<div id="chatbox">
-  <div id="chatbox-header">
-    <div style="display:flex; align-items:center;">
-      <img src="img/bot.png" alt="bot">
-      AI Assistant
+  <div id="chatbox">
+    <div id="chatbox-header">
+      <div style="display:flex; align-items:center;">
+        <img src="img/bot.png" alt="bot">
+        AI Assistant
+      </div>
+      <button id="close-chat">✖</button>
     </div>
-    <button id="close-chat">✖</button>
+    <div id="chatbox-messages"></div>
+    <div id="chatbox-input">
+      <input type="text" id="chat-input" placeholder="Type a message...">
+      <button id="send-btn">Send</button>
+    </div>
   </div>
-
-  <div id="chatbox-messages"></div>
-
-  <div id="chatbox-input">
-    <input type="text" id="chat-input" placeholder="Type a message...">
-    <button id="send-btn">Send</button>
-  </div>
-</div>
 
   <script>
-const chatBtn = document.getElementById("chatbot-button");
-const chatBox = document.getElementById("chatbox");
-const closeChat = document.getElementById("close-chat");
-const sendBtn = document.getElementById("send-btn");
-const chatInput = document.getElementById("chat-input");
-const chatMessages = document.getElementById("chatbox-messages");
+    const chatBtn = document.getElementById("chatbot-button");
+    const chatBox = document.getElementById("chatbox");
+    const closeChat = document.getElementById("close-chat");
+    const sendBtn = document.getElementById("send-btn");
+    const chatInput = document.getElementById("chat-input");
+    const chatMessages = document.getElementById("chatbox-messages");
 
-chatBtn.onclick = () => chatBox.classList.add("open");
-closeChat.onclick = () => chatBox.classList.remove("open");
+    chatBtn.onclick = () => chatBox.classList.add("open");
+    closeChat.onclick = () => chatBox.classList.remove("open");
 
-function addMessage(text, type) {
-  const div = document.createElement("div");
-  div.classList.add(type === "user" ? "user-msg" : "bot-msg", "message");
-  div.innerHTML = text;
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    function addMessage(text, type) {
+      const div = document.createElement("div");
+      div.classList.add(type === "user" ? "user-msg" : "bot-msg", "message");
+      div.innerHTML = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-// Fake AI response system
-function aiResponse(msg) {
-  if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I help you today? 😊";
-  if (msg.includes("qa")) return "QA ensures quality by testing, reporting bugs, and validating requirements.";
-  if (msg.includes("portfolio")) return "Your portfolio shows your QA experience, projects, and skills.";
-  return "Thank you! I'll try my best to help you. 😊";
-}
+    function aiResponse(msg) {
+      if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I help you today? 😊";
+      if (msg.includes("qa")) return "QA ensures quality by testing, reporting bugs, and validating requirements.";
+      if (msg.includes("portfolio")) return "Your portfolio shows your QA experience, projects, and skills.";
+      return "Thank you! I'll try my best to help you. 😊";
+    }
 
-function addTypingIndicator() {
-  const div = document.createElement("div");
-  div.classList.add("typing");
-  div.innerHTML = "<span></span><span></span><span></span>";
-  div.id = "typing";
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    function addTypingIndicator() {
+      const div = document.createElement("div");
+      div.classList.add("typing");
+      div.innerHTML = "<span></span><span></span><span></span>";
+      div.id = "typing";
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-function removeTypingIndicator() {
-  const el = document.getElementById("typing");
-  if (el) el.remove();
-}
+    function removeTypingIndicator() {
+      const el = document.getElementById("typing");
+      if (el) el.remove();
+    }
 
-sendBtn.onclick = () => {
-  const text = chatInput.value.trim();
-  if (!text) return;
-
-  addMessage(text, "user");
-  chatInput.value = "";
-
-  addTypingIndicator();
-
-  setTimeout(() => {
-    removeTypingIndicator();
-    addMessage(aiResponse(text.toLowerCase()), "bot");
-  }, 1000);
-};
-</script>
-
+    sendBtn.onclick = () => {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, "user");
+      chatInput.value = "";
+      addTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        addMessage(aiResponse(text.toLowerCase()), "bot");
+      }, 1000);
+    };
+  </script>
 
 </body>
 </html>
-
-
-
-
-
