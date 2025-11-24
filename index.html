@@ -258,11 +258,18 @@
       color: #fff;
       cursor: pointer;
     }
+
+    /* Fix chatbot small picture */
+#chatbox-header img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
   </style>
 
-  <style>
-/* existing CSS here */
-</style>
 
 </head>
 <body>
@@ -340,7 +347,7 @@
 
   <div id="chatbox">
     <div id="chatbox-header">
-      <div style="display:flex; align-items:center; width:50px;">
+      <div style="display:flex; align-items:center;">
         <img src="img/bot.png" alt="bot">
         AI Assistant
       </div>
@@ -408,6 +415,7 @@
 
 </body>
 </html>
+
 
 
 
