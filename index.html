@@ -5,74 +5,180 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charles David R. Habaan - QA Portfolio</title>
   <style>
-    /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { line-height: 1.6; background-color: #f4f4f4; color: #333; }
+  /* Reset & Base */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+  body { line-height: 1.6; background-color: #f4f4f4; color: #333; }
 
-    /* Header */
-    header {
-      background: #333;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header h1 { font-size: 2.5em; margin-bottom: 5px; }
-    header p { font-size: 1.2em; }
+  /* --- ANIMATIONS --- */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    /* Navigation */
-    nav {
-      background: #444;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px 0;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ff6b6b; }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    /* Sections */
-    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
-    section h2 { text-align: center; margin-bottom: 30px; font-size: 2em; color: #333; }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
-    /* About */
-    #about p { max-width: 700px; margin: 20px auto 0; text-align: center; }
-    #about img { display: block; margin: 20px auto; border-radius: 50%; width: 200px; height: 200px; object-fit: cover; }
+  /* Header */
+  header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+  }
+  header h1 { font-size: 2.5em; margin-bottom: 5px; }
+  header p { font-size: 1.2em; }
 
-    /* Projects */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .project-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .project-card:hover { transform: translateY(-5px); }
-    .project-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
-    .project-card h3 { margin-bottom: 10px; color: #333; }
-    .project-card p { color: #666; }
+  /* Navigation */
+  nav {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    animation: slideUp 0.8s ease-out;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  nav a:hover { color: #2beac4; transform: scale(1.1); }
 
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .skill { background: #2beac4; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; }
+  /* Sections */
+  section { 
+    padding: 50px 20px; 
+    max-width: 1000px; 
+    margin: auto; 
+    animation: fadeIn 1.2s ease forwards; 
+  }
+  
+  section h2 { 
+    text-align: center; 
+    margin-bottom: 30px; 
+    font-size: 2em; 
+    color: #333;
+    animation: slideUp 1s ease-out; 
+  }
 
-    /* Contact */
-    #contact form { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
-    #contact input, #contact textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; }
-    #contact button {
-      background: #333; color: #fff; padding: 10px; border: none; border-radius: 5px;
-      cursor: pointer; font-size: 1em;
-    }
-    #contact button:hover { background: #2beac4; }
+  /* About */
+  #about img { 
+    display: block; 
+    margin: 20px auto; 
+    border-radius: 50%; 
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover;
+    animation: fadeIn 2s ease-out;
+  }
+  #about p { 
+    max-width: 700px; 
+    margin: 20px auto 0; 
+    text-align: center;
+    animation: slideUp 1.5s ease-out;
+  }
 
-    /* Footer */
-    footer { text-align: center; padding: 20px 0; background: #333; color: #fff; }
-  </style>
+  /* Projects */
+  .projects { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+  }
+
+  .project-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.4s, box-shadow 0.3s;
+    opacity: 0;
+    animation: fadeIn 1.3s ease forwards;
+  }
+
+  .project-card:hover { 
+    transform: translateY(-8px) scale(1.03); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  .project-card img { 
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 5px; 
+    margin-bottom: 10px; 
+  }
+
+  .project-card h3 { margin-bottom: 10px; color: #333; }
+  .project-card p { color: #666; }
+
+  /* Skills */
+  .skills { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; 
+    animation: fadeIn 2s ease-out;
+  }
+
+  .skill { 
+    background: #2beac4; 
+    color: #fff; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    font-weight: bold;
+    animation: pop 2s infinite ease-in-out;
+  }
+
+  /* Contact */
+  #contact form { 
+    max-width: 600px; 
+    margin: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px;
+    animation: slideUp 1.4s ease-out;
+  }
+  #contact input, 
+  #contact textarea { 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    width: 100%; 
+  }
+
+  #contact button {
+    background: #333; 
+    color: #fff; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    font-size: 1em;
+    transition: background 0.3s, transform 0.3s;
+  }
+  #contact button:hover { 
+    background: #2beac4;
+    transform: scale(1.05);
+  }
+
+  /* Footer */
+  footer { 
+    text-align: center; 
+    padding: 20px 0; 
+    background: #333; 
+    color: #fff; 
+    animation: fadeIn 2s ease-out;
+  }
+</style>
 </head>
 <body>
 
@@ -154,4 +260,5 @@
 
 </body>
 </html>
+
 
