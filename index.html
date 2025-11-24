@@ -5,56 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charles David R. Habaan - QA Portfolio</title>
   <style>
-
-    .stars span {
-  font-size: 40px;
-  cursor: pointer;
-  transition: 0.3s;
-  color: #ccc;
-  display: inline-block;
-  user-select: none;
-}
-
-.stars span.active {
-  color: gold;
-  transform: scale(1.2);
-}
-
-    
-    #feedback form {
-  max-width: 600px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  animation: slideUp 1.4s ease-out;
-}
-
-#feedback input,
-#feedback textarea {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-
-#feedback button {
-  background: #333;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background 0.3s, transform 0.3s;
-}
-
-#feedback button:hover {
-  background: #2beac4;
-  transform: scale(1.05);
-}
-
-    
     /* Reset & Base */
     * {
       margin: 0;
@@ -64,29 +14,27 @@
     }
     body {
       line-height: 1.6;
-      background-color: #f4f4f4;
-      color: #333;
+      color: #fff;
+
+      /* Animated gradient background */
+      background: linear-gradient(-45deg, #2beac4, #ff8c00, #6a0dad, #ff0066);
+      background-size: 400% 400%;
+      animation: gradientMove 20s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
     /* Header */
     header {
-      background: #333;
-      color: #fff;
+      background: rgba(0,0,0,0.6);
       padding: 20px 0;
       text-align: center;
       animation: fadeIn 1s ease-out;
@@ -96,7 +44,7 @@
 
     /* Navigation */
     nav {
-      background: #444;
+      background: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -117,12 +65,14 @@
       max-width: 1000px;
       margin: auto;
       animation: fadeIn 1.2s ease forwards;
+      background: rgba(0,0,0,0.4);
+      border-radius: 15px;
+      margin-bottom: 40px;
     }
     section h2 {
       text-align: center;
       margin-bottom: 30px;
       font-size: 2em;
-      color: #333;
       animation: slideUp 1s ease-out;
     }
 
@@ -150,17 +100,15 @@
       gap: 20px;
     }
     .project-card {
-      background: #fff;
+      background: rgba(255,255,255,0.1);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       transition: transform 0.4s, box-shadow 0.3s;
-      opacity: 0;
-      animation: fadeIn 1.3s ease forwards;
     }
     .project-card:hover {
       transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
     .project-card img {
       width: 100%;
@@ -169,8 +117,8 @@
       border-radius: 5px;
       margin-bottom: 10px;
     }
-    .project-card h3 { margin-bottom: 10px; color: #333; }
-    .project-card p { color: #666; }
+    .project-card h3 { margin-bottom: 10px; }
+    .project-card p { color: #ddd; }
 
     /* Skills */
     .skills {
@@ -189,8 +137,8 @@
       animation: pop 2s infinite ease-in-out;
     }
 
-    /* Contact */
-    #contact form {
+    /* Forms */
+    form {
       max-width: 600px;
       margin: auto;
       display: flex;
@@ -198,13 +146,13 @@
       gap: 15px;
       animation: slideUp 1.4s ease-out;
     }
-    #contact input, #contact textarea {
+    form input, form textarea {
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
       width: 100%;
     }
-    #contact button {
+    form button {
       background: #333;
       color: #fff;
       padding: 10px;
@@ -214,113 +162,40 @@
       font-size: 1em;
       transition: background 0.3s, transform 0.3s;
     }
-    #contact button:hover {
+    form button:hover {
       background: #2beac4;
       transform: scale(1.05);
+    }
+
+    /* Feedback Stars */
+    .stars span {
+      font-size: 40px;
+      cursor: pointer;
+      color: #ccc;
+      transition: 0.3s;
+      display: inline-block;
+      user-select: none;
+    }
+    .stars span.active {
+      color: gold;
+      transform: scale(1.2);
+    }
+
+    /* Display Ratings */
+    .display-ratings .rating-entry {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
 
     /* Footer */
     footer {
       text-align: center;
       padding: 20px 0;
-      background: #333;
-      color: #fff;
-      animation: fadeIn 2s ease-out;
+      background: rgba(0,0,0,0.6);
     }
-
-    /* Chatbot Button & Chatbox */
-    #chatbot-button {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #2beac4;
-      color: #fff;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      font-size: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      animation: pop 2s infinite ease;
-      z-index: 999;
-    }
-    #chatbox {
-      position: fixed;
-      bottom: 100px;
-      right: 25px;
-      width: 300px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 999;
-    }
-    #chatbox.open { display: flex; }
-    #chatbox-header {
-      background: #2beac4;
-      color: #fff;
-      padding: 10px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    #chatbox-messages {
-      height: 260px;
-      padding: 10px;
-      overflow-y: auto;
-      background: #f7f7f7;
-    }
-    .user-msg {
-      background: #333;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 10px;
-      margin: 5px 0;
-      text-align: right;
-    }
-    .bot-msg {
-      background: #e5e5e5;
-      color: #333;
-      padding: 8px 12px;
-      border-radius: 10px;
-      margin: 5px 0;
-      width: fit-content;
-    }
-    #chatbox-input {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-    #chatbox-input input {
-      flex: 1;
-      padding: 10px;
-      border: none;
-    }
-    #chatbox-input button {
-      padding: 10px 15px;
-      background: #2beac4;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* Fix chatbot small picture */
-#chatbox-header img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 8px;
-}
-
   </style>
-
-
 </head>
 <body>
 
@@ -339,7 +214,7 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <img src="img/viber_image_2025-10-06_10-38-57-643.png" alt="Charles David Habaan Profile Picture">
+    <img src="img/viber_image_2025-10-06_10-38-57-643.png" alt="Profile Picture">
     <p>Hello! I am Charles David R. Habaan, a Software Quality Assurance Engineer I. I specialize in functional testing, QA planning, defect tracking, and ensuring software meets business requirements. Passionate about improving software quality and enhancing user experience, I have experience with both manual and automated testing across multiple systems.</p>
   </section>
 
@@ -391,279 +266,108 @@
   </section>
 
   <section id="feedback">
-  <h2>Feedback</h2>
-      <!-- Rating Stars -->
-  <div class="rating-box">
-    <h3>Rate My Portfolio</h3>
-    <div class="stars" id="rating-stars">
-      <span data-star="1">★</span>
-      <span data-star="2">★</span>
-      <span data-star="3">★</span>
-      <span data-star="4">★</span>
-      <span data-star="5">★</span>
+    <h2>Feedback</h2>
+    <div class="rating-box">
+      <h3>Rate My Portfolio</h3>
+      <div class="stars" id="rating-stars">
+        <span data-star="1">★</span>
+        <span data-star="2">★</span>
+        <span data-star="3">★</span>
+        <span data-star="4">★</span>
+        <span data-star="5">★</span>
+      </div>
+      <p id="selected-rating">Your Rating: 0 ⭐</p>
     </div>
-    <p id="selected-rating">Your Rating: 0 ⭐</p>
-  </div>
-    
-  <form action="https://formsubmit.co/charlesdavid.ge2020@gmail.com" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
 
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="feedback" rows="5" placeholder="Share your feedback about my projects..." required></textarea>
-  <button type="submit">Submit Feedback</button>
-</form>
+    <form action="https://formsubmit.co/charlesdavid.ge2020@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+      <input type="hidden" name="rating" id="hidden-rating" value="0">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="feedback" rows="5" placeholder="Share your feedback about my projects..." required></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
 
-    <!-- Display Submitted Ratings -->
-  <div class="display-ratings">
-    <h3>Community Ratings</h3>
-    <p id="avg-rating">Average Rating: ⭐ 0.0</p>
-    <div id="rating-list"></div>
-  </div>
-    
-</section>
+    <div class="display-ratings">
+      <h3>Community Ratings</h3>
+      <p id="avg-rating">Average Rating: ⭐ 0.0</p>
+      <div id="rating-list"></div>
+    </div>
+  </section>
 
   <footer>
     <p>&copy; 2025 Charles David R. Habaan. All rights reserved.</p>
   </footer>
 
-  <div id="chatbot-button">💬</div>
-
-  <div id="chatbox">
-    <div id="chatbox-header">
-      <div style="display:flex; align-items:center;">
-        <img src="img/bot.png" alt="bot">
-        AI Assistant
-      </div>
-      <button id="close-chat">✖</button>
-    </div>
-    <div id="chatbox-messages"></div>
-    <div id="chatbox-input">
-      <input type="text" id="chat-input" placeholder="Type a message...">
-      <button id="send-btn">Send</button>
-    </div>
-  </div>
-
   <script>
-    const chatBtn = document.getElementById("chatbot-button");
-    const chatBox = document.getElementById("chatbox");
-    const closeChat = document.getElementById("close-chat");
-    const sendBtn = document.getElementById("send-btn");
-    const chatInput = document.getElementById("chat-input");
-    const chatMessages = document.getElementById("chatbox-messages");
+    // Star rating logic
+    let selectedRating = 0;
+    const stars = document.querySelectorAll("#rating-stars span");
+    let feedbackData = JSON.parse(localStorage.getItem("feedbackList")) || [];
 
-    chatBtn.onclick = () => chatBox.classList.add("open");
-    closeChat.onclick = () => chatBox.classList.remove("open");
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        selectedRating = star.getAttribute("data-star");
+        updateStars(selectedRating);
+      });
+    });
 
-    function addMessage(text, type) {
-      const div = document.createElement("div");
-      div.classList.add(type === "user" ? "user-msg" : "bot-msg", "message");
-      div.innerHTML = text;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+    function updateStars(rating) {
+      stars.forEach(star => {
+        star.classList.toggle("active", star.getAttribute("data-star") <= rating);
+      });
+      document.getElementById("selected-rating").textContent = "Your Rating: " + rating + " ⭐";
     }
 
-    function aiResponse(msg) {
-      if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I help you today? 😊";
-      if (msg.includes("qa")) return "QA ensures quality by testing, reporting bugs, and validating requirements.";
-      if (msg.includes("portfolio")) return "Your portfolio shows your QA experience, projects, and skills.";
-      return "Thank you! I'll try my best to help you. 😊";
+    const fbForm = document.querySelector("#feedback form");
+    fbForm.addEventListener("submit", function (e) {
+      if (selectedRating == 0) {
+        alert("Please select a star rating ⭐ before submitting!");
+        e.preventDefault();
+        return;
+      }
+      document.getElementById("hidden-rating").value = selectedRating;
+
+      const name = fbForm.querySelector("[name='name']").value;
+      const message = fbForm.querySelector("[name='feedback']").value;
+      const newEntry = {
+        name,
+        rating: selectedRating,
+        message,
+        date: new Date().toLocaleString()
+      };
+      feedbackData.push(newEntry);
+      localStorage.setItem("feedbackList", JSON.stringify(feedbackData));
+      displayRatings();
+    });
+
+    function displayRatings() {
+      const list = document.getElementById("rating-list");
+      const avgDisplay = document.getElementById("avg-rating");
+      list.innerHTML = "";
+      if (feedbackData.length === 0) {
+        avgDisplay.textContent = "Average Rating: ⭐ 0.0";
+        return;
+      }
+      let total = 0;
+      feedbackData.forEach(entry => {
+        total += parseInt(entry.rating);
+        const div = document.createElement("div");
+        div.classList.add("rating-entry");
+        div.innerHTML = `
+          <strong>${entry.name}</strong> — ⭐ ${entry.rating}<br>
+          <small>${entry.date}</small>
+          <p>${entry.message}</p>
+        `;
+        list.appendChild(div);
+      });
+      avgDisplay.textContent = "Average Rating: ⭐ " + (total / feedbackData.length).toFixed(1);
     }
 
-    function addTypingIndicator() {
-      const div = document.createElement("div");
-      div.classList.add("typing");
-      div.innerHTML = "<span></span><span></span><span></span>";
-      div.id = "typing";
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function removeTypingIndicator() {
-      const el = document.getElementById("typing");
-      if (el) el.remove();
-    }
-
-    sendBtn.onclick = () => {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      addMessage(text, "user");
-      chatInput.value = "";
-      addTypingIndicator();
-      setTimeout(() => {
-        removeTypingIndicator();
-        addMessage(aiResponse(text.toLowerCase()), "bot");
-      }, 1000);
-    };
+    displayRatings();
   </script>
 
-  <script>
-// ⭐ STAR RATING SELECTION
-let selectedRating = 0;
-const stars = document.querySelectorAll("#rating-stars span");
-let feedbackData = JSON.parse(localStorage.getItem("feedbackList")) || [];
-
-// Highlight stars
-stars.forEach(star => {
-  star.addEventListener("click", () => {
-    selectedRating = star.getAttribute("data-star");
-    updateStars(selectedRating);
-  });
-});
-
-function updateStars(rating) {
-  stars.forEach(star => {
-    star.classList.toggle("active", star.getAttribute("data-star") <= rating);
-  });
-  document.getElementById("selected-rating").textContent = "Your Rating: " + rating + " ⭐";
-}
-
-// ⭐ SAVE FEEDBACK + RATING (LOCAL STORAGE)
-const fbForm = document.querySelector("#feedback form");
-fbForm.addEventListener("submit", function (e) {
-  // let form submit normally to FormSubmit
-  const name = fbForm.querySelector("[name='name']").value;
-  const message = fbForm.querySelector("[name='feedback']").value;
-
-  if (selectedRating == 0) {
-    alert("Please select a star rating ⭐");
-    e.preventDefault();
-    return;
-  }
-
-  const newEntry = {
-    name,
-    rating: selectedRating,
-    message,
-    date: new Date().toLocaleString()
-  };
-
-  feedbackData.push(newEntry);
-  localStorage.setItem("feedbackList", JSON.stringify(feedbackData));
-
-  displayRatings();
-});
-
-// ⭐ DISPLAY RATINGS + AVERAGE
-function displayRatings() {
-  const list = document.getElementById("rating-list");
-  const avgDisplay = document.getElementById("avg-rating");
-
-  list.innerHTML = "";
-  if (feedbackData.length === 0) {
-    avgDisplay.textContent = "Average Rating: ⭐ 0.0";
-    return;
-  }
-
-  let total = 0;
-  feedbackData.forEach(entry => {
-    total += parseInt(entry.rating);
-
-    const div = document.createElement("div");
-    div.classList.add("rating-entry");
-    div.innerHTML = `
-      <strong>${entry.name}</strong> — ⭐ ${entry.rating}<br>
-      <small>${entry.date}</small>
-      <p>${entry.message}</p>
-    `;
-    list.appendChild(div);
-  });
-
-  avgDisplay.textContent = "Average Rating: ⭐ " + (total / feedbackData.length).toFixed(1);
-}
-
-displayRatings();
-</script>
-
-  <script>
-let selectedRating = 0;
-const stars = document.querySelectorAll("#rating-stars span");
-let feedbackData = JSON.parse(localStorage.getItem("feedbackList")) || [];
-
-// Highlight stars on click
-stars.forEach(star => {
-  star.addEventListener("click", () => {
-    selectedRating = star.getAttribute("data-star");
-    updateStars(selectedRating);
-  });
-});
-
-function updateStars(rating) {
-  stars.forEach(star => {
-    star.classList.toggle("active", star.getAttribute("data-star") <= rating);
-  });
-  document.getElementById("selected-rating").textContent = "Your Rating: " + rating + " ⭐";
-}
-
-// Save feedback + rating (localStorage)
-const fbForm = document.querySelector("#feedback form");
-fbForm.addEventListener("submit", function (e) {
-  // Check rating first
-  if (selectedRating == 0) {
-    alert("Please select a star rating ⭐ before submitting!");
-    e.preventDefault(); // stop submission
-    return;
-  }
-
-  const name = fbForm.querySelector("[name='name']").value;
-  const message = fbForm.querySelector("[name='feedback']").value;
-
-  const newEntry = {
-    name,
-    rating: selectedRating,
-    message,
-    date: new Date().toLocaleString()
-  };
-
-  feedbackData.push(newEntry);
-  localStorage.setItem("feedbackList", JSON.stringify(feedbackData));
-
-  displayRatings();
-});
-
-// Display ratings
-function displayRatings() {
-  const list = document.getElementById("rating-list");
-  const avgDisplay = document.getElementById("avg-rating");
-
-  list.innerHTML = "";
-  if (feedbackData.length === 0) {
-    avgDisplay.textContent = "Average Rating: ⭐ 0.0";
-    return;
-  }
-
-  let total = 0;
-  feedbackData.forEach(entry => {
-    total += parseInt(entry.rating);
-    const div = document.createElement("div");
-    div.classList.add("rating-entry");
-    div.innerHTML = `
-      <strong>${entry.name}</strong> — ⭐ ${entry.rating}<br>
-      <small>${entry.date}</small>
-      <p>${entry.message}</p>
-    `;
-    list.appendChild(div);
-  });
-
-  avgDisplay.textContent = "Average Rating: ⭐ " + (total / feedbackData.length).toFixed(1);
-}
-
-// Initialize
-displayRatings();
-</script>
-  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
