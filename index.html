@@ -5,6 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charles David R. Habaan - QA Portfolio</title>
   <style>
+   
+    #feedback form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideUp 1.4s ease-out;
+}
+
+#feedback input,
+#feedback textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+#feedback button {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s, transform 0.3s;
+}
+
+#feedback button:hover {
+  background: #2beac4;
+  transform: scale(1.05);
+}
+
+    
     /* Reset & Base */
     * {
       margin: 0;
@@ -284,6 +319,7 @@
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
+    <a href="#feedback">Feedback</a>
   </nav>
 
   <section id="about">
@@ -338,6 +374,16 @@
       <button type="submit">Send Message</button>
     </form>
   </section>
+
+  <section id="feedback">
+  <h2>Feedback</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Share your feedback about my projects..." required></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+</section>
 
   <footer>
     <p>&copy; 2025 Charles David R. Habaan. All rights reserved.</p>
@@ -415,6 +461,7 @@
 
 </body>
 </html>
+
 
 
 
