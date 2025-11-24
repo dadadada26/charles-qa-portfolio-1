@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charles David R. Habaan - QA Portfolio</title>
   <style>
-   
+
+    .stars span {
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #ccc;
+  display: inline-block;
+  user-select: none;
+}
+
+.stars span.active {
+  color: gold;
+  transform: scale(1.2);
+}
+
+    
     #feedback form {
   max-width: 600px;
   margin: auto;
@@ -561,9 +576,86 @@ function displayRatings() {
 displayRatings();
 </script>
 
+  <script>
+let selectedRating = 0;
+const stars = document.querySelectorAll("#rating-stars span");
+let feedbackData = JSON.parse(localStorage.getItem("feedbackList")) || [];
+
+// Highlight stars on click
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    selectedRating = star.getAttribute("data-star");
+    updateStars(selectedRating);
+  });
+});
+
+function updateStars(rating) {
+  stars.forEach(star => {
+    star.classList.toggle("active", star.getAttribute("data-star") <= rating);
+  });
+  document.getElementById("selected-rating").textContent = "Your Rating: " + rating + " ⭐";
+}
+
+// Save feedback + rating (localStorage)
+const fbForm = document.querySelector("#feedback form");
+fbForm.addEventListener("submit", function (e) {
+  // Check rating first
+  if (selectedRating == 0) {
+    alert("Please select a star rating ⭐ before submitting!");
+    e.preventDefault(); // stop submission
+    return;
+  }
+
+  const name = fbForm.querySelector("[name='name']").value;
+  const message = fbForm.querySelector("[name='feedback']").value;
+
+  const newEntry = {
+    name,
+    rating: selectedRating,
+    message,
+    date: new Date().toLocaleString()
+  };
+
+  feedbackData.push(newEntry);
+  localStorage.setItem("feedbackList", JSON.stringify(feedbackData));
+
+  displayRatings();
+});
+
+// Display ratings
+function displayRatings() {
+  const list = document.getElementById("rating-list");
+  const avgDisplay = document.getElementById("avg-rating");
+
+  list.innerHTML = "";
+  if (feedbackData.length === 0) {
+    avgDisplay.textContent = "Average Rating: ⭐ 0.0";
+    return;
+  }
+
+  let total = 0;
+  feedbackData.forEach(entry => {
+    total += parseInt(entry.rating);
+    const div = document.createElement("div");
+    div.classList.add("rating-entry");
+    div.innerHTML = `
+      <strong>${entry.name}</strong> — ⭐ ${entry.rating}<br>
+      <small>${entry.date}</small>
+      <p>${entry.message}</p>
+    `;
+    list.appendChild(div);
+  });
+
+  avgDisplay.textContent = "Average Rating: ⭐ " + (total / feedbackData.length).toFixed(1);
+}
+
+// Initialize
+displayRatings();
+</script>
   
 </body>
 </html>
+
 
 
 
