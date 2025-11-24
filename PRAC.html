@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charles David R. Habaan - QA Portfolio</title>
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background-color: #f4f4f4; color: #333; }
+
+    /* Header */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 5px; }
+    header p { font-size: 1.2em; }
+
+    /* Navigation */
+    nav {
+      background: #444;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ff6b6b; }
+
+    /* Sections */
+    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+    section h2 { text-align: center; margin-bottom: 30px; font-size: 2em; color: #333; }
+
+    /* About */
+    #about p { max-width: 700px; margin: 20px auto 0; text-align: center; }
+    #about img { display: block; margin: 20px auto; border-radius: 50%; width: 200px; height: 200px; object-fit: cover; }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px); }
+    .project-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
+    .project-card h3 { margin-bottom: 10px; color: #333; }
+    .project-card p { color: #666; }
+
+    /* Skills */
+    .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .skill { background: #2beac4; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; }
+
+    /* Contact */
+    #contact form { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
+    #contact input, #contact textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; }
+    #contact button {
+      background: #333; color: #fff; padding: 10px; border: none; border-radius: 5px;
+      cursor: pointer; font-size: 1em;
+    }
+    #contact button:hover { background: #2beac4; }
+
+    /* Footer */
+    footer { text-align: center; padding: 20px 0; background: #333; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Charles David R. Habaan</h1>
+    <p>Software Quality Assurance Engineer I</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="C:\Users\David\Downloads\viber_image_2025-10-06_10-38-57-643.png" alt="Charles David Habaan Profile Picture">
+    <p>Hello! I am Charles David R. Habaan, a Software Quality Assurance Engineer I. I specialize in functional testing, QA planning, defect tracking, and ensuring software meets business requirements. Passionate about improving software quality and enhancing user experience, I have experience with both manual and automated testing across multiple systems.</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="C:\Users\David\Downloads\eboss.png"> 
+        <h3>eBOSS System Testing</h3>
+        <p>Performed full-cycle testing for the eBOSS Business Permit Licensing System, including functional, regression, and UAT testing. Logged and tracked defects in OpenProject and ensured compliance with client requirements.</p>
+      </div>
+      <div class="project-card">
+        <img src="C:\Users\David\Downloads\crs.png">
+        <h3>TOMS Treasury Operations</h3>
+        <p>Conducted QA for the Treasury Operations Management System (TOMS), including dashboard verification, report validation, and transaction testing. Collaborated with developers to resolve critical issues and improve system reliability.</p>
+      </div>
+      <div class="project-card">
+        <img src="C:\Users\David\Downloads\testplan.png">
+        <h3>Test Plans & Documentation</h3>
+        <p>Created comprehensive test plans, test cases, and defect reports for multiple projects. Ensured traceability from requirements to test execution, improving overall software quality and reducing post-deployment defects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill">Manual Testing</span>
+      <span class="skill">Test Case Design</span>
+      <span class="skill">Bug Reporting</span>
+      <span class="skill">OpenProject</span>
+      <span class="skill">UAT & QA Coordination</span>
+      <span class="skill">Regression Testing</span>
+      <span class="skill">SRS Analysis</span>
+      <span class="skill">Automation Basics</span>
+      <span class="skill">SQL</span>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Subject" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Charles David R. Habaan. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
