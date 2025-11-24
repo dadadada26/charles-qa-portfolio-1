@@ -1,0 +1,36 @@
+/* style.css */
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+header h1 { font-size: 2.5em; margin-bottom: 5px; }
+header p { font-size: 1.2em; }
+
+/* ... all other CSS ... */
+
+/* Chatbot header image */
+#chatbox-header img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+}
